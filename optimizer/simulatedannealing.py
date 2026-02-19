@@ -34,7 +34,7 @@ def _sa_worker(args):
             current_path = list(range(len(cylinders)))
             random.shuffle(current_path)
 
-    current_score = utils_solver.calculate_fitness_collision(current_path, cylinders, params, margin=0.9) #On peut cahnger la fitness
+    current_score = utils_solver.calculate_fitness_collision(current_path, cylinders, params, margin=0.8) #On peut cahnger la fitness
 
     best_path = current_path[:]
     best_score = current_score
@@ -57,7 +57,7 @@ def _sa_worker(args):
             i, j = sorted(random.sample(range(len(cylinders)), 2))
             neighbor[i:j+1] = reversed(neighbor[i:j+1])
         
-        neighbor_score = utils_solver.calculate_fitness_collision(neighbor, cylinders, params, margin=0.9) # On peut changer la fitness
+        neighbor_score = utils_solver.calculate_fitness_collision(neighbor, cylinders, params, margin=0.8) # On peut changer la fitness
 
         delta = neighbor_score - current_score
 

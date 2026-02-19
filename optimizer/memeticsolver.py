@@ -9,7 +9,7 @@ def _memetic_worker(args):
     individuals, cylinders, params, search_depth = args
 
     current_path = individuals[:]
-    current_score = utils_solver.calculate_fitness_collision(current_path, cylinders, params, margin=0.9)
+    current_score = utils_solver.calculate_fitness_collision(current_path, cylinders, params, margin=0.8)
 
     T = 10.0 #On optimise localement donc température assez faible
     alpha = 0.90 #On refroidit assez vite, on a pas le temps pour ces conneries
@@ -19,7 +19,7 @@ def _memetic_worker(args):
         i, j = random.sample(range(len(current_path)), 2)
         neighbor[i], neighbor[j] = neighbor[j], neighbor[i]
 
-        new_score = utils_solver.calculate_fitness_collision(neighbor, cylinders, params, margin=0.9)
+        new_score = utils_solver.calculate_fitness_collision(neighbor, cylinders, params, margin=0.8)
 
         if new_score > current_score:
             current_path = neighbor

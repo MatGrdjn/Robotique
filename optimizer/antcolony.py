@@ -33,7 +33,7 @@ def _ant_worker(args):
     Qmax, Tmax = params["Qmax"], params["Tmax"]
 
     R_robot, R_cyl = params["R_ROBOT"], params["R_CYL"]
-    COLLISIONS_DIST = R_robot + R_cyl - 0.9
+    COLLISIONS_DIST = R_robot + R_cyl - 0.8
 
     cylinders = np.asarray(cylinders, dtype=np.float64)
     while True:
@@ -120,7 +120,7 @@ def _ant_worker(args):
         path.append(next_step)
 
     
-    final_score = utils_solver.calculate_fitness_collision(path, cylinders, params, 0.9)
+    final_score = utils_solver.calculate_fitness_collision(path, cylinders, params, 0.8)
 
     return path, final_score
 

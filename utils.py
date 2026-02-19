@@ -67,7 +67,7 @@ def run_full_simulation(exe_path, script_path="C:/challenge/script.txt", score_p
     # On surveille la date de modification du fichier
     initial_time = os.path.getmtime(score_path) if os.path.exists(score_path) else 0
     
-    timeout = 60 # secondes
+    timeout = 600 # secondes
     start_wait = time.time()
     
     while True:

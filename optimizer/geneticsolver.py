@@ -10,7 +10,7 @@ def _ga_worker(args):
     """
     individual, cylinders, params = args
 
-    return utils_solver.calculate_fitness_collision(individual, cylinders, params, margin=0.9) #Fitness collisons, on peut la changer
+    return utils_solver.calculate_fitness_collision(individual, cylinders, params, margin=0.8) #Fitness collisons, on peut la changer
 
 class GeneticSolver:
 

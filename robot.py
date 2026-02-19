@@ -10,7 +10,7 @@ class Robot:
         self.R_ROBOT = r_robot
         self.R_CYL = r_cyl
 
-        self.COLLISION_DIST = self.R_ROBOT + self.R_CYL - 0.9 #Petite marge au cas où, on sait jamais
+        self.COLLISION_DIST = self.R_ROBOT + self.R_CYL - 0.8 #Petite marge au cas où, on sait jamais
 
     def reset(self):
         self.pos = np.array([0, 0])
@@ -43,7 +43,7 @@ class Robot:
         alpha = np.degrees(alpha)
 
         if np.abs(alpha) > 0.01:
-            rotation_instruct = f"TURN {alpha:.2f}\n"
+            rotation_instruct = f"TURN {alpha:.5f}\n"
         
         if np.abs(distance) > 0.01:
             distance_instruct = f"GO {distance:.5f}\n" # On arrondira plus tard
@@ -56,7 +56,7 @@ class Robot:
         
         #print("Done")
 
-    def catch_all_cylinders(self, cylinders, path, margin=0.9):
+    def catch_all_cylinders(self, cylinders, path, margin=0.8):
 
         pos_cylinders = cylinders[:, :2]
         num_cylinders = len(pos_cylinders)
@@ -82,7 +82,7 @@ class Robot:
             dist_to_go = dist_center_to_center - stop_margin
 
             if dist_to_go < 0:
-                dsit_to_go = 0
+                dist_to_go = 0
 
             self.instructions_to_script(alpha, dist_to_go, path)
 

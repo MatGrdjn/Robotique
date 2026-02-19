@@ -6,6 +6,7 @@ from optimizer.simulatedannealing import SimulatedAnnealing
 from optimizer.memeticsolver import MemeticSolver
 from optimizer.antcolony import AntColonySolver
 from optimizer.mctssolver import MCTSSolver
+from optimizer.exactsolver import ExactSolver
 from robot import Robot
 import time
 
@@ -16,6 +17,8 @@ base_folder = "C:/challenge"
 
 exe_path = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/RunTime/challenge-robotique.exe"
 exe_path_aerial = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/Runtime-2026-v2-small-collider/challenge-robotique.exe"
+exe_path_v4 = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/RunTime-2026-v4/RunTime-2026-v4/challenge-robotique.exe"
+exe_path_v5 = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/RunTime-2026-v5/RunTime-2026-v5/challenge-robotique.exe"
 
 simulation_path = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/RunTime/challenge-robotique.exe"
 script_path = "C:/challenge/script.txt"
@@ -56,7 +59,6 @@ def multi_solve(solvers, cylinders, robot, exe_path):
 
         print("=== Lancement simulation Unity ===")
         res = utils.run_full_simulation(exe_path)
-        res["temps_execution"] = execution_time
         utils.log_results_to_csv(res, str(solver))
 
 
@@ -117,6 +119,18 @@ if __name__ == "__main__":
         exploration_weight=1.414
     )
 
-    solvers = [sa]
 
-    multi_solve(solvers, cylinders, robot, exe_path_aerial)
+    if len(cylinders) <= 2:
+        print(f"Carte de {len(cylinders)} cylindre -> Recherche exhaustive")
+        solver = ExactSolver(cylinders, params)
+        opt_cylinders, execution_time = optimize(solver, cylinders)
+        robot.catch_all_cylinders(opt_cylinders, script_path)
+
+        print("=== Lancement simulation Unity ===")
+        res = utils.run_full_simulation(exe_path_v4)
+        res["temps_execution"] = execution_time
+        utils.log_results_to_csv(res, str(solver))
+
+    else:
+        solvers = [mcts]
+        multi_solve(solvers, cylinders, robot, exe_path_v4)

@@ -41,7 +41,7 @@ def _simulate_physics_step_jit(dist, current_mass, V0, a, b, b0):
 
 
 @njit(cache=True)
-def _calculate_fitness_collision_jit(path_indices, cylinders, V0, a, b, b0, Qmax, Tmax, R_robot, R_cyl, margin=9):
+def _calculate_fitness_collision_jit(path_indices, cylinders, V0, a, b, b0, Qmax, Tmax, R_robot, R_cyl, margin=0.8):
     """
     Fitness avancée, détection de colisions sur le trajet
     """
@@ -187,7 +187,7 @@ def distance_point_segment(point, start, end):
     return _distance_point_segment_jit(p_arr, s_arr, e_arr)
 
 
-def calculate_fitness_collision(path_indices, cylinders, params, margin=0.9):
+def calculate_fitness_collision(path_indices, cylinders, params, margin=0.8):
 
     path_array = np.asarray(path_indices, dtype=np.int32)
     cyls_array = np.asarray(cylinders, dtype=np.float64)
