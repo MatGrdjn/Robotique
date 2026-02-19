@@ -10,7 +10,7 @@ class Robot:
         self.R_ROBOT = r_robot
         self.R_CYL = r_cyl
 
-        self.COLLISION_DIST = self.R_ROBOT + self.R_CYL - 0.05 #Petite marge au cas où, on sait jamais
+        self.COLLISION_DIST = self.R_ROBOT + self.R_CYL - 0.9 #Petite marge au cas où, on sait jamais
 
     def reset(self):
         self.pos = np.array([0, 0])
@@ -56,7 +56,7 @@ class Robot:
         
         #print("Done")
 
-    def catch_all_cylinders(self, cylinders, path, margin=0.1):
+    def catch_all_cylinders(self, cylinders, path, margin=0.9):
 
         pos_cylinders = cylinders[:, :2]
         num_cylinders = len(pos_cylinders)

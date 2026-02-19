@@ -1,18 +1,7 @@
-date;algorithme;gain;fuel_restant;temps_restant
-2026-02-18 15:59:33;GeneticSolver(pop_size=400, mutation_rate=0.1, generations=1000, k=4);16.0;18727.77;591.6017
-2026-02-18 21:40:55;SimulatedAnnealing(T_init=300, T_min=0.001, alpha=0.9999, max_iter=1000000);16.0;18728.94;591.6533
-2026-02-18 22:27:13;MemeticSolver(pop_size=200, mutation_rate=0.1, generations=300, k=3, local_search_depth=100);16.0;18710.78;591.2582
-2026-02-18 22:40:56;GeneticSolver(pop_size=400, mutation_rate=0.1, generations=1000, k=4);14.0;18475.17;589.5367
-2026-02-18 22:42:12;SimulatedAnnealing(T_init=300, T_min=0.001, alpha=0.9999, max_iter=1000000);16.0;18712.06;591.2778
-2026-02-18 22:43:57;MemeticSolver(pop_size=200, mutation_rate=0.1, generations=300, k=3, local_search_depth=50);16.0;18711.98;591.2553
-2026-02-19 00:36:37;AntColonySolver(n_ants=50, n_iterations=2000, alpha=1.0, beta=2.5, evaporation=0.1, Q=100);16.0;18727.37;591.662
-2026-02-19 01:28:05;MCTSSolver(iterations=10000, exploration_weight=1.141);16.0;18713.03;591.2399
-2026-02-19 01:36:20;MCTSSolver(iterations=50000, exploration_weight=1.141);16.0;18712.16;591.2465
-2026-02-19 02:25:18;MCTSSolver(iterations=50000, exploration_weight=1.414);16.0;18713.44;591.1588
-2026-02-19 02:27:52;MCTSSolver(iterations=50000, exploration_weight=1.414);16.0;18713.03;591.2752
-2026-02-19 02:32:12;MCTSSolver(iterations=200000, exploration_weight=1.414);16.0;18713.03;591.279
-2026-02-19 02:44:03;AntColonySolver(n_ants=50, n_iterations=2000, alpha=1.0, beta=2.5, evaporation=0.05, Q=100);15.0;18694.73;591.3752
-2026-02-19 02:45:17;GeneticSolver(pop_size=1000, mutation_rate=0.2, generations=1000, k=4);16.0;18728.55;591.6595
-2026-02-19 02:46:30;SimulatedAnnealing(T_init=300, T_min=0.001, alpha=0.9999, max_iter=1000000);14.0;18462.53;589.4004
-2026-02-19 02:48:16;SimulatedAnnealing(T_init=300, T_min=0.001, alpha=0.99999, max_iter=3000000);16.0;18712.14;591.2837
-2026-02-19 02:49:50;MemeticSolver(pop_size=500, mutation_rate=0.2, generations=500, k=3, local_search_depth=50);16.0;18712.09;591.2281
+date;algorithme;gain;fuel_restant;temps_restant;temps_execution
+2026-02-19 10:27:38;GeneticSolver(pop_size=1000, mutation_rate=0.2, generations=1000, k=4);25.0;18037.35;583.9335;37.780720472335815
+2026-02-19 10:28:54;SimulatedAnnealing(T_init=300, T_min=0.001, alpha=0.99999, max_iter=3000000);25.0;18037.35;583.9513;55.82408952713013
+2026-02-19 10:30:02;MemeticSolver(pop_size=500, mutation_rate=0.2, generations=600, k=3, local_search_depth=50);25.0;18037.66;583.9642;47.80006957054138
+2026-02-19 10:30:50;AntColonySolver(n_ants=50, n_iterations=2000, alpha=1.0, beta=2.5, evaporation=0.05, Q=100);25.0;18117.68;584.6248;28.675225496292114
+2026-02-19 10:32:25;MCTSSolver(iterations=300000, exploration_weight=1.414);25.0;18192.68;585.4207;76.01583909988403
+2026-02-19 10:40:13;SimulatedAnnealing(T_init=300, T_min=0.001, alpha=0.99999, max_iter=3000000);25.0;18038.82;583.9235;54.14092707633972

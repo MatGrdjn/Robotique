@@ -15,6 +15,7 @@ ROBOT_DIAMETER = 1
 base_folder = "C:/challenge"
 
 exe_path = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/RunTime/challenge-robotique.exe"
+exe_path_aerial = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/Runtime-2026-v2-small-collider/challenge-robotique.exe"
 
 simulation_path = "C:/Users/Utilisateur/Documents/CoursCI2/Challenge/RunTime/challenge-robotique.exe"
 script_path = "C:/challenge/script.txt"
@@ -37,24 +38,25 @@ def optimize(solver, cylinders):
     print("=== Lancement de l'optimisation ===")
     start_time = time.time()
     best_path, best_score = solver.solve()
-    end_time = time.time()
+    execution_time = time.time() - start_time
 
-    print(f"Optimisation terminée en {end_time - start_time}s")
+    print(f"Optimisation terminée en {execution_time}s")
     opt_cylinders = cylinders[best_path]
 
-    return opt_cylinders
+    return opt_cylinders, execution_time
 
 
-def multi_solve(solvers, cylinders, robot):
+def multi_solve(solvers, cylinders, robot, exe_path):
     for solver in solvers:
         robot.reset()
 
-        opt_cylinders = optimize(solver, cylinders)
+        opt_cylinders, execution_time = optimize(solver, cylinders)
 
         robot.catch_all_cylinders(opt_cylinders, script_path)
 
         print("=== Lancement simulation Unity ===")
         res = utils.run_full_simulation(exe_path)
+        res["temps_execution"] = execution_time
         utils.log_results_to_csv(res, str(solver))
 
 
@@ -92,7 +94,7 @@ if __name__ == "__main__":
         params,
         pop_size=500,
         mutation_rate=0.2,
-        generations=500,
+        generations=600,
         tournament_k=3,
         local_search_depth=50
     )
@@ -111,10 +113,10 @@ if __name__ == "__main__":
     mcts = MCTSSolver(
         cylinders,
         params,
-        iterations=200_000,
+        iterations=300_000,
         exploration_weight=1.414
     )
 
-    solvers = [ms]
+    solvers = [sa]
 
-    multi_solve(solvers, cylinders, robot)
+    multi_solve(solvers, cylinders, robot, exe_path_aerial)

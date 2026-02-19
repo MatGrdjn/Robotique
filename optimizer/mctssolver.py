@@ -50,7 +50,7 @@ def _mcts_worker(args):
                 remaining.remove(best_r)
                 current_p = cylinders[best_r][:2]
         
-        raw_score = utils_solver.calculate_fitness_collision(rollout_path, cylinders, params, margin=0.1)
+        raw_score = utils_solver.calculate_fitness_collision(rollout_path, cylinders, params, margin=0.9)
 
         if raw_score > best_global_score:
             best_global_score = raw_score

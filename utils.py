@@ -42,7 +42,8 @@ def log_results_to_csv(results, algo_name, csv_path="runs_history.csv"):
         "algorithme": [algo_name],
         "gain": [results["gain"]],
         "fuel_restant": [results["fuel_restant"]],
-        "temps_restant": [results["temps_restant"]]
+        "temps_restant": [results["temps_restant"]],
+        "temps_execution" : [results["temps_execution"]]
     }
 
     df_new = pd.DataFrame(data)
