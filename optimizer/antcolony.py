@@ -35,6 +35,7 @@ def _ant_worker(args):
     R_robot, R_cyl = params["R_ROBOT"], params["R_CYL"]
     COLLISIONS_DIST = R_robot + R_cyl - 0.1
 
+    cylinders = np.asarray(cylinders, dtype=np.float64)
     while True:
 
         candidates = [i for i in range(num_cylinders) if not visited_mask[i]]
@@ -159,7 +160,7 @@ class AntColonySolver:
 
         if processes is None:
             processes = cpu_count()
-
+            
         print(f"Début de l'optimisation sur {processes} coeurs")
 
         best_overall = []

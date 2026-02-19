@@ -72,8 +72,8 @@ if __name__ == "__main__":
     ga = GeneticSolver(
         cylinders, 
         params,
-        pop_size=400,
-        mutation_rate=0.1,
+        pop_size=1000,
+        mutation_rate=0.2,
         generations=1000,
         tournament_k=4
     )
@@ -83,16 +83,16 @@ if __name__ == "__main__":
         params,
         T_init=300,
         T_min=0.001,
-        alpha=0.9999,
-        max_iter=1_000_000
+        alpha=0.99999,
+        max_iter=3_000_000
     ) # Assez capricieux, très variancé
 
     ms = MemeticSolver(
         cylinders,
         params,
-        pop_size=200,
-        mutation_rate=0.1,
-        generations=300,
+        pop_size=500,
+        mutation_rate=0.2,
+        generations=500,
         tournament_k=3,
         local_search_depth=50
     )
@@ -104,17 +104,17 @@ if __name__ == "__main__":
         n_iterations=2000,
         alpha=1.0,
         beta=2.5,
-        evaporation=0.1, 
+        evaporation=0.05, 
         Q=100
     )
 
     mcts = MCTSSolver(
         cylinders,
         params,
-        iterations=50_000,
+        iterations=200_000,
         exploration_weight=1.414
     )
 
-    solvers = [mcts]
+    solvers = [ms]
 
     multi_solve(solvers, cylinders, robot)
